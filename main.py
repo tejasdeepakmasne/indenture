@@ -15,7 +15,9 @@ async def create_item(item: Item):
     """
     Endpoint to receive JSON data and return it.
     """
-    return item.dict()
+    d = item.model_dump()
+    print(d)
+    return item.model_dump()
 
 @app.post("/receive-json/")
 async def receive_json(data: Dict):
@@ -37,3 +39,5 @@ async def process_json(payload: dict):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+    
+    
